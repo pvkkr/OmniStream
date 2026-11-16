@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Android APK & temporary files (GitHub 100MB limit)
+Android_APK/
+*.apk
+*.lnk
+
+# Caches and logs
+*cache*
+*.log
+.system_generated/
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
