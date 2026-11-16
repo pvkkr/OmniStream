@@ -167,6 +167,23 @@ class VLCShortcutsDialog(QDialog):
 
         layout.addWidget(frame)
 
+        # Bottom row with GitHub & Close
+        btn_row = QHBoxLayout()
+
+        import webbrowser
+        btn_gh = QPushButton("⭐ Star on GitHub")
+        btn_gh.setStyleSheet("""
+            background-color: #1e293b;
+            color: #38bdf8;
+            border: 1px solid #0284c7;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 6px;
+        """)
+        btn_gh.clicked.connect(lambda: webbrowser.open("https://github.com/pvkkr/OmniStream"))
+        btn_row.addWidget(btn_gh)
+        btn_row.addStretch()
+
         btn_close = QPushButton("Got it!")
         btn_close.setStyleSheet("""
             background-color: #2563eb;
@@ -176,4 +193,6 @@ class VLCShortcutsDialog(QDialog):
             border-radius: 6px;
         """)
         btn_close.clicked.connect(self.accept)
-        layout.addWidget(btn_close, alignment=Qt.AlignRight)
+        btn_row.addWidget(btn_close)
+
+        layout.addLayout(btn_row)

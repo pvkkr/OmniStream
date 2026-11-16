@@ -5,6 +5,7 @@ OmniStream & Downloader - Universal Video Downloader & VLC Player Desktop App
 import sys
 import os
 import subprocess
+import webbrowser
 from pathlib import Path
 from typing import Optional, Dict, Any
 
@@ -84,6 +85,12 @@ class MainWindow(QMainWindow):
         self.btn_shortcuts.setProperty("class", "SecondaryButton")
         self.btn_shortcuts.clicked.connect(self._on_show_shortcuts)
         vlc_box.addWidget(self.btn_shortcuts)
+
+        self.btn_github = QPushButton("⭐ GitHub")
+        self.btn_github.setStyleSheet("background-color: #1e293b; color: #38bdf8; border: 1.5px solid #0284c7; font-weight: bold; border-radius: 8px; padding: 7px 14px;")
+        self.btn_github.setToolTip("Open official repository: https://github.com/pvkkr/OmniStream")
+        self.btn_github.clicked.connect(lambda: webbrowser.open("https://github.com/pvkkr/OmniStream"))
+        vlc_box.addWidget(self.btn_github)
 
         h_layout.addLayout(vlc_box)
         main_layout.addWidget(header_frame)
@@ -313,8 +320,10 @@ class MainWindow(QMainWindow):
 
         tip_label = QLabel(
             "💡 <b>Tip for VLC Streaming:</b> In VLC, use <b>Shift + Left/Right</b> (3s seek), "
-            "<b>Alt + Left/Right</b> (10s seek), or mouse timeline scrubbing to jump backwards & forwards seamlessly!"
+            "<b>Alt + Left/Right</b> (10s seek), or mouse timeline scrubbing to jump backwards & forwards seamlessly! "
+            "&bull; <a href=\"https://github.com/pvkkr/OmniStream\" style=\"color: #38bdf8; font-weight: bold; text-decoration: underline;\">GitHub: pvkkr/OmniStream</a>"
         )
+        tip_label.setOpenExternalLinks(True)
         tip_label.setStyleSheet("color: #64748b; font-size: 11px; padding: 2px 4px;")
         main_layout.addWidget(tip_label)
 
