@@ -1,5 +1,9 @@
 # OmniStream - Universal Video Downloader & VLC Player
 
+<p align="center">
+  <img src="OmniStream_Poster.jpg" alt="OmniStream Poster" width="650"/>
+</p>
+
 A powerful Windows desktop application to download videos from any website with quality format selectors and stream directly into VLC media player with full backward & forward timeline seeking.
 
 ---
