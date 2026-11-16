@@ -3,7 +3,8 @@ $DesktopPath = [System.Environment]::GetFolderPath([System.Environment+SpecialFo
 $ShortcutPath = Join-Path $DesktopPath "OmniStream - Video Downloader & VLC.lnk"
 $Shortcut = $WshShell.CreateShortcut($ShortcutPath)
 
-$AppDir = "c:\Users\pvkkr\Downloads\ABC"
+$AppDir = $PSScriptRoot
+if (-not $AppDir) { $AppDir = (Get-Location).Path }
 $TargetBat = Join-Path $AppDir "run.bat"
 
 $Shortcut.TargetPath = $TargetBat

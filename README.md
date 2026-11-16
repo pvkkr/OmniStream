@@ -31,12 +31,25 @@ A powerful Windows desktop application to download videos from any website with 
 
 ---
 
-## 🚀 How to Launch the App
+## 🚀 How to Set Up & Get the Desktop Icon
 
-- **Desktop Shortcut**: Double-click **`OmniStream - Video Downloader & VLC`** on your Desktop.
-- **Batch Launcher**: Double-click [`run.bat`](file:///c:/Users/pvkkr/Downloads/ABC/run.bat) in `c:\Users\pvkkr\Downloads\ABC`.
-- **Command Line**:
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 2. How to Add the Desktop Icon (One-Click)
+- In the project folder, simply **double-click `create_shortcut.bat`**.
+- An icon named **`OmniStream - Video Downloader & VLC`** will immediately appear on your Windows Desktop!
+
+*Alternative manual method*: Right-click `run.bat` &rarr; **Send to** &rarr; **Desktop (create shortcut)**.
+
+---
+
+## 💻 How to Launch the App
+- **From Desktop**: Double-click the **`OmniStream - Video Downloader & VLC`** icon on your Desktop.
+- **From Folder**: Double-click **`run.bat`**.
+- **From Terminal**:
   ```powershell
-  cd c:\Users\pvkkr\Downloads\ABC
   python app.py
   ```
