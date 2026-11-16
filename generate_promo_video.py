@@ -236,7 +236,42 @@ def main():
 
     proc.stdin.close()
     proc.wait()
-    print(f"\nRender Complete! Video successfully saved to: {OUTPUT_MP4}")
+
+    # Add Music Soundtrack
+    print("\nAdding energetic music soundtrack to video...")
+    try:
+        from synthesize_music import generate_track
+        import wave
+        wav_temp = os.path.join(os.path.dirname(OUTPUT_MP4), "temp_soundtrack.wav")
+        raw_audio = generate_track(duration=30.0, sr=44100)
+        with wave.open(wav_temp, "wb") as wf:
+            wf.setnchannels(2)
+            wf.setsampwidth(2)
+            wf.setframerate(44100)
+            wf.writeframes(raw_audio)
+
+        final_temp = os.path.join(os.path.dirname(OUTPUT_MP4), "OmniStream_Demo_30s_muxed.mp4")
+        mux_cmd = [
+            ffmpeg_bin, "-y",
+            "-i", OUTPUT_MP4,
+            "-i", wav_temp,
+            "-c:v", "copy",
+            "-c:a", "aac",
+            "-b:a", "192k",
+            "-shortest",
+            final_temp
+        ]
+        res = subprocess.run(mux_cmd, capture_output=True)
+        if res.returncode == 0:
+            if os.path.exists(OUTPUT_MP4):
+                os.remove(OUTPUT_MP4)
+            os.rename(final_temp, OUTPUT_MP4)
+        if os.path.exists(wav_temp):
+            os.remove(wav_temp)
+    except Exception as e:
+        print(f"Warning: Audio muxing skipped: {e}")
+
+    print(f"\nRender Complete! Video with music successfully saved to: {OUTPUT_MP4}")
 
 if __name__ == "__main__":
     main()

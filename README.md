@@ -2,6 +2,8 @@
 
 <p align="center">
   <img src="OmniStream_Poster.jpg" alt="OmniStream Poster" width="650"/>
+  <br/>
+  <a href="OmniStream_Demo_30s.mp4"><b>🎬 Watch 30-Second Demo Video (with Music)</b></a>
 </p>
 
 A powerful Windows desktop application to download videos from any website with quality format selectors and stream directly into VLC media player with full backward & forward timeline seeking.
